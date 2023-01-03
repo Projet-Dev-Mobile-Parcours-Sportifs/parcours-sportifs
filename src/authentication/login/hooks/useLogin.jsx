@@ -1,21 +1,45 @@
-import { useDispatch } from "react-redux"
-import { useFitnessTrailApi } from "../../../shared/api/hooks/useFitnessTrailApi"
-import connectedUser from "../../shared/stores/connectedUser"
-
+import { useDispatch } from "react-redux";
+import { useFitnessTrailApi } from "../../../shared/api/hooks/useFitnessTrailApi";
+import { connect } from "../stores/connectedUser";
+import { useTokens } from "./useTokens";
+import { call } from "../../../shared/stores";
 export const useLogin = () => {
-  const messages = { error: "Il y a eu une erreur.", success: "connexion réussie" }
-  const dispatch = useDispatch()
-  const { call: callLogin, data } = useFitnessTrailApi({ endpoint: '/auth/login', action: 'post', messages })
+  const defaultMessages = {
+    error: "Il y a eux une erreur",
+    success: "Connexion réussie",
+  };
+  const { call: callLogin } = useFitnessTrailApi({
+    endpoint: "/auth/login",
+    action: "post",
+    messages: { error: defaultMessages.error },
+  });
+  const { call: getUser } = useFitnessTrailApi({
+    endpoint: "/users/me",
+    action: "get",
+    messages: defaultMessages,
+  });
+  const dispatch = useDispatch();
+  const { setTokens } = useTokens();
 
   const login = async (params) => {
-    await callLogin(params)
+    const loginResponse = await callLogin(params);
+    setTokens(loginResponse);
+    setConnectedUser();
+  };
 
-    const { access_token, refresh_token } = data
-    sessionStorage.setItem("access_token", access_token);
-    sessionStorage.setItem("refresh_token", refresh_token);
+  const setConnectedUser = async (messages = defaultMessages) => {
+    const user = await getUser({}, messages);
+    dispatch(connect(user));
+    dispatch(
+      call(
+        `items/classroom?filter={ "idProfessor": { "_eq": "${user.id}" }}`,
+        [],
+        "get",
+        "",
+        "classroom"
+      )
+    );
+  };
 
-    dispatch(connectedUser(params))
-  }
-
-  return { login }
-}
+  return { login, setConnectedUser };
+};
