@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import PropTypes from "prop-types";
 import { AccountCircle, Diversity3, FitnessCenter } from "@mui/icons-material";
@@ -16,6 +16,7 @@ export const Appbar = ({ ...props }) => {
   useRefreshConnectedUser();
   useStudent();
   useModule();
+
 
 
   const navigate = useNavigate();

@@ -13,7 +13,7 @@ export const useStudent = () => {
 
   const idClassroom = localStorage.getItem("classroom");
   const { call: getStudentClassroom } = useFitnessTrailApi({
-    endpoint: `/items/studentclassroom?filter={ "idClassroom": { "_eq": "${idClassroom}" }}`,
+    endpoint: `/items/StudentClassroom?filter={ "idClassroom": { "_eq": "${idClassroom}" }}`,
     action: "get",
   });
   useEffect(() => {
