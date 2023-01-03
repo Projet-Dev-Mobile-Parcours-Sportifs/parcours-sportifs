@@ -3,9 +3,9 @@ import { ThemeProvider } from "styled-components";
 import { getTheme } from "./themes/default.js";
 import { BrowserRouter } from "react-router-dom";
 import { Appbar } from "./shared/components/molecules/Appbar/Appbar";
-import { Routing } from "./shared/components/molecules/Routing/Routing";
+import { Routing } from "./shared/router/Routing";
 import { Provider } from "react-redux";
-import { store } from "./shared/stores/index";
+import { store } from "./shared/stores/store"
 
 function App() {
   return (
