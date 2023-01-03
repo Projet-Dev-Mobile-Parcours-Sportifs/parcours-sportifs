@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import PropTypes from "prop-types";
 import { AccountCircle, Diversity3, FitnessCenter } from "@mui/icons-material";
@@ -10,13 +10,11 @@ import { useRefreshConnectedUser } from "../../../../authentication/login/hooks/
 
 export const Appbar = ({ ...props }) => {
   let linkNav = [];
-
   const location = useLocation();
   const [link, setLink] = useState(location.pathname.substring(1));
   useRefreshConnectedUser();
   useStudent();
   useModule();
-
 
   const navigate = useNavigate();
 
