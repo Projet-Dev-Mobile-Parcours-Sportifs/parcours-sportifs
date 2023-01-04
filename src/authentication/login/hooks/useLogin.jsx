@@ -36,7 +36,7 @@ export const useLogin = () => {
     dispatch(connect(user))
     dispatch(
       call(
-        `items/Classroom?filter={ "idProfessor": { "_eq": "${user.id}" }}`,
+        `items/classroom?filter={ "idProfessor": { "_eq": "${user.id}" }}`,
         [],
         "get",
         "",

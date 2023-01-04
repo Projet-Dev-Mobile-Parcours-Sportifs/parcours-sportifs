@@ -15,7 +15,7 @@ export const useModule = () => {
     async function fetchData() {
       dispatch(
         call(
-          `items/Module?filter={ "idclassroom": { "_in": [${idClassroom}] }}`,
+          `items/module?filter={ "idclassroom": { "_in": [${idClassroom}] }}`,
           [],
           "get",
           "",

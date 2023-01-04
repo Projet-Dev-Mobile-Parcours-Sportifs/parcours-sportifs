@@ -4,12 +4,11 @@ import { useRoleIds } from "./useRoleIds"
 
 export const useRegister = (role) => {
   const { call: createUser } = useFitnessTrailApi({ endpoint: '/users', action: 'post' })
-  const { call: createClassroom } = useFitnessTrailApi({ endpoint: '/items/Classroom', action: 'post' })
+  const { call: createClassroom } = useFitnessTrailApi({ endpoint: '/items/classroom', action: 'post' })
   const { login } = useLogin()
   const roleIds = useRoleIds()
 
   const register = async (form) => {
-    console.log(form)
     const { password, email, firstName, lastName } = form
     const params = {
       first_name: firstName,
