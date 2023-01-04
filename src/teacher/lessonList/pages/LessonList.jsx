@@ -14,7 +14,7 @@ export const LessonList = () => {
 
   useEffect(() => {
     const getAllLesson = async () => {
-      dispatch(call("/users", [], "get", "", "students"));
+      dispatch(call("/Users", [], "get", "", "students"));
     };
     return getAllLesson;
   }, []);

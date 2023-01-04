@@ -3,8 +3,10 @@ import { useFitnessTrailApi } from "../../../shared/api/hooks/useFitnessTrailApi
 import { connect } from "../stores/connectedUser"
 import { useTokens } from "./useTokens"
 import { call } from "../../../shared/api/stores/api"
+import { useNavigate } from "react-router-dom"
 
 export const useLogin = () => {
+  const navigate = useNavigate()
   const defaultMessages = {
     error: "Il y a eux une erreur",
     success: "Connexion réussie",
@@ -26,6 +28,7 @@ export const useLogin = () => {
     const loginResponse = await callLogin(params)
     setTokens(loginResponse)
     await setConnectedUser()
+    navigate(`/account`)
   }
 
   const setConnectedUser = async (messages = defaultMessages) => {
@@ -33,7 +36,7 @@ export const useLogin = () => {
     dispatch(connect(user))
     dispatch(
       call(
-        `items/classroom?filter={ "idProfessor": { "_eq": "${user.id}" }}`,
+        `items/Classroom?filter={ "idProfessor": { "_eq": "${user.id}" }}`,
         [],
         "get",
         "",
