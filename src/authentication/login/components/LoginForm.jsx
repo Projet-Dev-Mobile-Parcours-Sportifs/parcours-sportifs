@@ -14,7 +14,7 @@ export const LoginForm = ({ login }) => {
         <TextField form={{ errors, register }} id="email" label="Email" rules={emailRules} />
         <TextField type="password" form={{ errors, register }} id="password" label="Mot de passe" />
         <Button type="submit" variant="contained" style={{ margin: 20 }}>Se connecter</Button>
-        <Link href="/register/user">Créer son compte</Link>
+        <Link href="/register/student">Créer son compte</Link>
       </form>
     </Box>
   )

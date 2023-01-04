@@ -9,7 +9,6 @@ export const useModuleList = {
 
 export const useModule = () => {
   const dispatch = useDispatch();
-
   const idClassroom = localStorage.getItem("classroom");
 
   useEffect(() => {

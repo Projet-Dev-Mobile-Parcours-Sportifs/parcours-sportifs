@@ -13,7 +13,7 @@ export const useAuthenticationMiddleware = () => {
   const isUrlBeginningWith = (url) => location.pathname.startsWith(url)
 
   useEffect(() => {
-    if ((!hasUrl('register') && !hasUrl('login')) && !isConnected) navigate('/register/user')
+    if ((!hasUrl('register') && !hasUrl('login')) && !isConnected) navigate('/register/student')
     if (isProfessor && isUrlBeginningWith('/student')) navigate(-1)
     if (isStudent && isUrlBeginningWith('/professor')) navigate(-1)
   }, [location])

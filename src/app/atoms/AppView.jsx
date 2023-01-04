@@ -15,7 +15,7 @@ export const AppView = () => {
 
   return (
     <>
-      {isConnected ? <Appbar role="professor" /> : null}
+      {isConnected ? <Appbar /> : null}
       <Routing />
       <div className="appbar_space"></div>
     </>
