@@ -4,18 +4,11 @@ import PropTypes from "prop-types";
 import { AccountCircle, Diversity3, FitnessCenter } from "@mui/icons-material";
 import { StyledAppbar } from "./styles";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useModule } from "../../../../teacher/moduleList/hooks/useModuleList";
-import { useStudent } from "../../../../teacher/studentList/hooks/useStudentList";
-import { useRefreshConnectedUser } from "../../../../authentication/login/hooks/useRefreshConnectedUser";
 
 export const Appbar = ({ ...props }) => {
   let linkNav = [];
   const location = useLocation();
   const [link, setLink] = useState(location.pathname.substring(1));
-  useRefreshConnectedUser();
-  useStudent();
-  useModule();
-
   const navigate = useNavigate();
 
   if (props.role === "professor") {
