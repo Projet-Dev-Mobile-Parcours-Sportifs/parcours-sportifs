@@ -11,6 +11,7 @@ import { CreateModule } from "../../modules/pages/CreateModule"
 import { ModifyModule } from "../../modules/pages/ModifyModule"
 import { CreateGoal } from "../../goals/pages/CreateGoal"
 import { ModifyGoal } from "../../goals/pages/ModifyGoal"
+import { StudentModulesList } from "../../student/modules/pages/StudentModulesList"
 
 export const Routing = () => {
     return (
@@ -32,6 +33,7 @@ export const Routing = () => {
             <Route path="/module/:moduleId/goal/create" element={<CreateGoal />} />
             <Route path="/module/:moduleId/goal/:goalId/modify" element={<ModifyGoal />} />
 
+            <Route path="/student/modules" element={<StudentModulesList />} />
         </Routes>
     )
 }
