@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import PropTypes from "prop-types";
-import { AccountCircle, Diversity3, FitnessCenter } from "@mui/icons-material";
-import { StyledAppbar } from "./styles";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useModule } from "../../../../teacher/moduleList/hooks/useModuleList";
-import { useStudent } from "../../../../teacher/studentList/hooks/useStudentList";
-import { useRefreshConnectedUser } from "../../../../authentication/login/hooks/useRefreshConnectedUser";
+import { useState } from "react"
+import { BottomNavigation, BottomNavigationAction } from "@mui/material"
+import PropTypes from "prop-types"
+import { AccountCircle, Diversity3, FitnessCenter } from "@mui/icons-material"
+import { StyledAppbar } from "./styles"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useRoles } from "../../../../authentication/shared/hooks/useRoles"
 
-export const Appbar = ({ ...props }) => {
-  let linkNav = [];
+export const Appbar = () => {
+  let linkNav = []
+  const location = useLocation()
+  const [link, setLink] = useState(location.pathname.substring(1))
+  const navigate = useNavigate()
+  const { role } = useRoles()
 
-  const location = useLocation();
-  const [link, setLink] = useState(location.pathname.substring(1));
-  useRefreshConnectedUser();
-  useStudent();
-  useModule();
-
-
-  const navigate = useNavigate();
-
-  if (props.role === "professor") {
+  if (role === "professor") {
     linkNav = [
       {
         key: 1,
@@ -43,16 +36,16 @@ export const Appbar = ({ ...props }) => {
         navigation: "account",
         icon: <AccountCircle />,
       },
-    ];
+    ]
   }
 
-  if (props.role === "student") {
+  if (role === "student") {
     linkNav = [
       {
         key: 2,
         value: "modules",
         label: "Modules",
-        navigation: "modules",
+        navigation: "student/modules",
         icon: <FitnessCenter />,
       },
       {
@@ -62,17 +55,16 @@ export const Appbar = ({ ...props }) => {
         navigation: "account",
         icon: <AccountCircle />,
       },
-    ];
+    ]
   }
 
   return (
     <StyledAppbar>
       <div className="App">Parcours Sportifs</div>
       <BottomNavigation
-        {...props}
         value={link}
         onChange={(event, newLink) => {
-          setLink(newLink);
+          setLink(newLink)
         }}
       >
         {linkNav.map((x) => (
@@ -83,12 +75,12 @@ export const Appbar = ({ ...props }) => {
         ))}
       </BottomNavigation>
     </StyledAppbar>
-  );
-};
+  )
+}
 
 Appbar.propTypes = {
   /**
    * Which nale
    */
   role: PropTypes.string,
-};
+}

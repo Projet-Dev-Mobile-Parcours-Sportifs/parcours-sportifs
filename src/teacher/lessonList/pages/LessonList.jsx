@@ -14,7 +14,7 @@ export const LessonList = () => {
 
   useEffect(() => {
     const getAllLesson = async () => {
-      dispatch(call("/Users", [], "get", "", "students"));
+      dispatch(call("/users", [], "get", "", "students"));
     };
     return getAllLesson;
   }, []);
@@ -30,7 +30,6 @@ export const LessonList = () => {
           variant="outlined"
           style={{
             color: "black",
-
             borderColor: "black",
           }}
         >

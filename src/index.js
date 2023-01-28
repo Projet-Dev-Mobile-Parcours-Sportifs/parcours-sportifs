@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import { store } from './shared/stores/store'
 import { Notifications } from './shared/notifications/components/molecules/Notifications'
+import { App } from '../src/app/molecules/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

@@ -19,6 +19,7 @@ export const CreateGoal = () => {
   return (
     <FormBox title="Créer l'objectif" onSubmit={handleSubmit((form) => createGoal(form))}>
       <TextField form={{ errors, register }} id='name' label='Objectif' rules={{ required: "Veuillez entrer le nom de l'objectif" }} />
+      <TextField form={{ errors, register }} id='level' label='Niveau' rules={{ required: "Veuillez entrer le niveau de l'objectif" }} />
       <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
     </FormBox>
   )

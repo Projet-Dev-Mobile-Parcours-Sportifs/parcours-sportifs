@@ -24,6 +24,7 @@ export const ModifyGoal = () => {
   return (
     <FormBox title="Modifier l'objectif" onSubmit={handleSubmit((form) => modifyGoal(form))}>
       <TextField form={{ errors, register }} defaultValue={data?.name} id='name' label='Nom' />
+      <TextField form={{ errors, register }} defaultValue={data?.level} id='level' label='Niveau' />
       <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
     </FormBox>
   )
