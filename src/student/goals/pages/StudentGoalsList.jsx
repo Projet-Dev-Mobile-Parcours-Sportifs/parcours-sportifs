@@ -1,42 +1,23 @@
-import { useStudent, useGoals, useStudentgoal } from "../hooks/useStudentGoals";
-
+import { useGoals,useStudentgoal } from "../hooks/useStudentGoals";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useNavigate } from "react-router-dom";
 import { Card } from "@mui/material";
-import CreateIcon from "@mui/icons-material/Create";
-import AddIcon from "@mui/icons-material/Add";
-import { Action } from "../../shared/components/atoms/Action/Action";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { useFitnessTrailApi } from "../../shared/api/hooks/useFitnessTrailApi";
 
-export const ShowStudentGoal = () => {
-  const { studentDetail: studentDetail } = useStudent();
-  const {
-    modules: modules,
-    isLoading,
-    fetchData: fetchDataModule,
-  } = useGoals();
-  const { fetchData, studentGoals: studentGoals } = useStudentgoal();
-  const hasDatas = !isLoading && modules.length > 0;
+export const StudentGoalsList = () => {
+  const { modules, isLoading: isLoadingGoals, fetchData } = useGoals();
 
-  const { call: callDelete } = useFitnessTrailApi({
-    endpoint: "",
-    action: "delete",
-  });
-  const deleteGoalStudent = async (id) => {
-    await callDelete("", "", `/items/studentgoal/${id}`);
-    fetchData();
-    fetchDataModule();
-  };
 
-  const navigate = useNavigate();
+  const { fetchData : fetchStudentGoals, studentGoals: studentGoals } = useStudentgoal();
+  const hasDatas = !isLoadingGoals && modules.length > 0;
+
+
+
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>
-        Goals de {studentDetail.first_name} {studentDetail.last_name}
+        Liste de vos goals
       </h1>
-      {isLoading ? (
+      {isLoadingGoals ? (
         <div
           style={{
             display: "flex",
@@ -76,18 +57,6 @@ export const ShowStudentGoal = () => {
                             <p>Note : {goal.studentGoal.level}</p>
                             <p>Commentaire : {goal.studentGoal.comments}</p>
                           </div>
-                          <Action
-                            action={() =>
-                              navigate(`/teacher/student/${studentDetail.id}/${goal.studentGoal.id}/modify`)
-                            }
-                            icon={<CreateIcon></CreateIcon>}
-                          ></Action>
-                          <Action
-                            action={() =>
-                              deleteGoalStudent(goal.studentGoal.id)
-                            }
-                            icon={<DeleteIcon></DeleteIcon>}
-                          ></Action>
                         </div>
                       ) : (
                         <div
@@ -98,16 +67,8 @@ export const ShowStudentGoal = () => {
                           }}
                         >
                           <p style={{ marginRight: "15px" }}>
-                            Ajouter une note
+                            Pas de note
                           </p>
-                          <Action
-                            action={() =>
-                              navigate(
-                                `/teacher/student/${studentDetail.id}/goal/${goal.id}/student-goal/create`
-                              )
-                            }
-                            icon={<AddIcon></AddIcon>}
-                          ></Action>
                         </div>
                       )}
                     </div>
@@ -123,5 +84,9 @@ export const ShowStudentGoal = () => {
         </p>
       )}
     </>
-  );
-};
+  );};
+
+
+
+
+
