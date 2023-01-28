@@ -20,7 +20,7 @@ export const CreateGoal = () => {
     <FormBox title="Créer l'objectif" onSubmit={handleSubmit((form) => createGoal(form))}>
       <TextField form={{ errors, register }} id='name' label='Objectif' rules={{ required: "Veuillez entrer le nom de l'objectif" }} />
       <TextField form={{ errors, register }} id='level' label='Niveau' rules={{ required: "Veuillez entrer le niveau de l'objectif" }} />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
+      <Button type="submit" variant="outlined" style={{ margin: 20, color: "#28666E", borderColor: "#28666E"}}>Valider</Button>
     </FormBox>
   )
 }

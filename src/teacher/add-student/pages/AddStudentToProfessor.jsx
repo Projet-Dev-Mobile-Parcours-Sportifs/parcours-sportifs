@@ -26,7 +26,7 @@ export const AddStudentToProfessor = () => {
   return (
     <FormBox title="Ajouter l'élève à votre liste d'élèves" onSubmit={handleSubmit((form) => createGoal(form))}>
       <TextField form={{ errors, register }} id='email' label="Email de l'utilisateur" rules={{ required: "Veuillez entrer l'email de l'utilisateur" }} />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>Ajouter</Button>
+      <Button type="submit" variant="outlined" style={{color: "#28666E", borderColor: "#28666E", margin: 20 }}>Ajouter</Button>
     </FormBox>
   )
 }

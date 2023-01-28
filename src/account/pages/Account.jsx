@@ -39,12 +39,12 @@ const { emailRules } = useInputRules()
   return (
     <>
       <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100%' }}>
-        <h1 style={{ textAlign: "center" }}>Page Account</h1>  
+        <h1 style={{ textAlign: "center" }}>Page compte</h1>  
         <form onSubmit={handleSubmit(update)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <TextField form={{ errors, register }} label="Prénom" defaultValue={user["first_name"]} id="firstName" rules={{ required: 'Veuillez entrer un prénom'}} style={{ width: "90vw", margin: 10}} />
             <TextField form={{ errors, register }} label="Nom" defaultValue={user["last_name"]} id="lastName" rules={{ required: 'Veuillez entrer un nom'}} style={{ width: "90vw", margin: 10}} />
             <TextField  form={{ errors, register }} label="Email" defaultValue={user["email"]} id="email" rules={emailRules} style={{ width: "90vw", margin: 10}} />
-            <Button type="submit" variant="contained" style={{ margin: 20, background: "#28666E" }}>Modifier vos infos</Button>
+            <Button type="submit" variant="outlined" style={{ margin: 20, color: "#28666E", borderColor: "#28666E"}}>Modifier vos infos</Button>
         </form>  
       </Box>
     </>

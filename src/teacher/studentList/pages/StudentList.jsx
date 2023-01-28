@@ -7,10 +7,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import { useSelector } from "react-redux";
 import { useFitnessTrailApi } from "../../../shared/api/hooks/useFitnessTrailApi";
+import { useNavigate } from "react-router-dom";
 
 export const StudentList = () => {
   const { fetchData, students } = useStudent();
   const { data, isLoading } = useSelector((state) => state.fitnessTrailApi);
+  const navigate = useNavigate();
   let hasDatas = false
   let isLoadingStudents = true
   if (students.length > 0) {
@@ -47,13 +49,18 @@ export const StudentList = () => {
     <>
       <h1 style={{ textAlign: "center" }}>Liste des élèves</h1>
       <div className="buttonAdd">
-        <Button
+      <Button
           variant="outlined"
           style={{
-            color: "black",
+            color: "#28666E",
 
-            borderColor: "black",
+            borderColor: "#28666E",
           }}
+          onClick={() =>
+            navigate(
+              `/teacher/student/create`
+            )
+          }
         >
           Ajouter des élèves
         </Button>
@@ -79,7 +86,7 @@ export const StudentList = () => {
                 action={
                   <>
                     <Action
-                      action={"student/update/" + object.id}
+                      action={() => navigate(`/teacher/student/${object.id}/goals`)}
                       icon={<VisibilityIcon></VisibilityIcon>}
                     ></Action>
                     <Action

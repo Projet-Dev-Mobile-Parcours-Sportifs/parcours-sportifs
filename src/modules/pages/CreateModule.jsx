@@ -35,7 +35,7 @@ export const CreateModule = () => {
         label="Nom du module"
         rules={{ required: "Veuillez entrer le nom du module" }}
       />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>
+      <Button type="submit" variant="outlined" style={{ margin: 20 ,color: "#28666E", borderColor: "#28666E" }}>
         Valider
       </Button>
     </FormBox>

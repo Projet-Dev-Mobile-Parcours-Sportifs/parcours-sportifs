@@ -13,14 +13,14 @@ export const CreateStudentGoal = () => {
   const { call: createGoal } = useFitnessTrailApi({ endpoint: `/items/studentgoal`, action: 'post', messages })
   const createStudentGoal = async (form) => {
     await createGoal({ ...form, idStudent: studentId, idGoal: goalId })
-    navigate('/teacher/student-goal')
+    navigate(`/teacher/student/${studentId}/goals`)
   }
 
   return (
     <FormBox title="Créer la note de l'élève" onSubmit={handleSubmit((form) => createStudentGoal(form))}>
       <TextField form={{ errors, register }} id='comments' label='Commentaire' />
       <TextField form={{ errors, register }} id='level' label='Note' rules={{ required: 'Veuillez entrer la note' }} />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
+      <Button type="submit" variant="outlined" style={{ color: "#28666E",borderColor: "#28666E",margin: 20 }}>Valider</Button>
     </FormBox>
   )
 }

@@ -23,19 +23,19 @@ export const useStudent = () => {
     const allStudentClassroom = await getStudentClassroom();
 
     const totalStudent = allStudentClassroom.length;
-    let string = "[";
+    let filterStudent = "[";
     setStudents(allStudentClassroom);
     allStudentClassroom.map(function (currentStudent, index) {
-      string += `"${currentStudent.idStudent}"`;
+      filterStudent += `"${currentStudent.idStudent}"`;
       if (index != totalStudent - 1) {
-        string += ",";
+        filterStudent += ",";
       }
     });
-    string += "]";
+    filterStudent += "]";
     if (totalStudent > 0) {
       dispatch(
         call(
-          `/users?filter={ "id": { "_in": ${string}}}`,
+          `/users?filter={ "id": { "_in": ${filterStudent}}}`,
           [],
           "get",
           "",

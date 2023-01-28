@@ -31,9 +31,8 @@ export const ModuleList = () => {
         <Button
           variant="outlined"
           style={{
-            color: "black",
-
-            borderColor: "black",
+            color: "#28666E",
+            borderColor: "#28666E",
           }}
           onClick={() =>
             navigate(
