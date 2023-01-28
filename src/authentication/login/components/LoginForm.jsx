@@ -13,7 +13,7 @@ export const LoginForm = ({ login }) => {
       <form onSubmit={handleSubmit((form) => login(form))} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <TextField form={{ errors, register }} id="email" label="Email" rules={emailRules} />
         <TextField type="password" form={{ errors, register }} id="password" label="Mot de passe" />
-        <Button type="submit" variant="contained" style={{ margin: 20 }}>Se connecter</Button>
+        <Button type="submit" variant="outlined" style={{ margin: 20, color: "#28666E", borderColor: "#28666E" }}>Se connecter</Button>
         <Link href="/register/student">Créer son compte</Link>
       </form>
     </Box>

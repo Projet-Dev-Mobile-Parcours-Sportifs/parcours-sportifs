@@ -16,7 +16,7 @@ export const RegisterForm = ({ handleRegister }) => {
         <TextField form={{ errors, register }} id="lastName" label="Nom" rules={{ required: 'Veuillez entrer votre nom de famille' }} />
         <TextField form={{ errors, register }} id="email" label="Email" rules={emailRules} />
         <PasswordsInputs form={{ errors, register }} />
-        <Button type="submit" variant="contained" style={{ margin: 20 }}>Créer son compte</Button>
+        <Button type="submit" variant="outlined" style={{ margin: 20 , color: "#28666E", borderColor: "#28666E" }}>Créer son compte</Button>
         <Link href="/login">Se connecter</Link>
       </form>
     </Box>

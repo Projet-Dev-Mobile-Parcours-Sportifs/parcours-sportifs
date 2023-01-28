@@ -15,7 +15,7 @@ export const ModifyGoal = () => {
   const { call: modify } = useFitnessTrailApi({ endpoint: `/items/goal/${goalId}`, action: 'patch', messages })
   const modifyGoal = async (form) => {
     await modify(form)
-    navigate(`/module/${moduleId}`)
+    navigate(`/teacher/module/${moduleId}`)
   }
 
   useEffect(() => { getGoal() }, [])
@@ -25,7 +25,7 @@ export const ModifyGoal = () => {
     <FormBox title="Modifier l'objectif" onSubmit={handleSubmit((form) => modifyGoal(form))}>
       <TextField form={{ errors, register }} defaultValue={data?.name} id='name' label='Nom' />
       <TextField form={{ errors, register }} defaultValue={data?.level} id='level' label='Niveau' />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
+      <Button type="submit" variant="outlined" style={{ margin: 20, color: "#28666E", borderColor: "#28666E", }}>Valider</Button>
     </FormBox>
   )
 }

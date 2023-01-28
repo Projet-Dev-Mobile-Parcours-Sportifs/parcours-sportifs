@@ -24,7 +24,7 @@ export const ModifyModule = () => {
   return (
     <FormBox title="Modifier le module" onSubmit={handleSubmit((form) => modifyModule(form))}>
       <TextField form={{ errors, register }} defaultValue={data?.name} id='name' label='Nom du module' rules={{ required: 'Veuillez entrer le nom du module' }} />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
+      <Button type="submit" variant="outlined" style={{ margin: 20, color: "#28666E", borderColor: "#28666E" }}>Valider</Button>
     </FormBox>
   )
 }

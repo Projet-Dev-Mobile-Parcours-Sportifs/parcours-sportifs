@@ -7,7 +7,7 @@ import { FormBox } from "../../shared/form/inputs/components/FormBox"
 import { TextField } from "../../shared/form/inputs/components/TextField"
 
 export const ModifyStudentGoal = () => {
-  const { goalId } = useParams()
+  const { studentId, goalId } = useParams()
   const { register, handleSubmit, formState: { errors } } = useForm()
   const navigate = useNavigate()
   const messages = { success: "la note a été modifié" }
@@ -15,7 +15,7 @@ export const ModifyStudentGoal = () => {
   const { call: modifyGoal } = useFitnessTrailApi({ endpoint: `/items/studentgoal/${goalId}`, action: 'patch', messages })
   const modifyStudentGoal = async (form) => {
     await modifyGoal(form)
-    navigate('/student-goal')
+    navigate(`/teacher/student/${studentId}/goals`)
   }
 
   useEffect(() => { getGoal() }, [])
@@ -26,7 +26,7 @@ export const ModifyStudentGoal = () => {
     <FormBox title="Modifier la note de l'élève" onSubmit={handleSubmit((form) => modifyStudentGoal(form))}>
       <TextField form={{ errors, register }} defaultValue={data?.comments} id='comments' label='Commentaire' />
       <TextField form={{ errors, register }} defaultValue={data?.level} id='level' label='Note' />
-      <Button type="submit" variant="contained" style={{ margin: 20 }}>Valider</Button>
+      <Button type="submit" variant="outlined" style={{color: "#28666E", borderColor: "#28666E",margin: 20 }}>Valider</Button>
     </FormBox>
   )
 }
